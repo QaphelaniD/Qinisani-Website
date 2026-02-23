@@ -19,4 +19,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// NO FORM CODE HERE - Forms now work naturally!
+// MOBILE MENU TOGGLE (only works on mobile)
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
+
+if (mobileMenu && navMenu) {
+  mobileMenu.addEventListener('click', function() {
+    navMenu.classList.toggle('active');
+    
+    // Change icon between ☰ and ✕
+    const icon = this.querySelector('i');
+    if (navMenu.classList.contains('active')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+  
+  // Close menu when clicking a link
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      navMenu.classList.remove('active');
+      const icon = mobileMenu.querySelector('i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    });
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (navMenu.classList.contains('active') && 
+        !navMenu.contains(e.target) && 
+        !mobileMenu.contains(e.target)) {
+      navMenu.classList.remove('active');
+      const icon = mobileMenu.querySelector('i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+}
