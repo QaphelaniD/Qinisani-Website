@@ -19,44 +19,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// MOBILE MENU TOGGLE (only works on mobile)
-const mobileMenu = document.getElementById('mobile-menu');
-const navMenu = document.getElementById('nav-menu');
-
-if (mobileMenu && navMenu) {
-  mobileMenu.addEventListener('click', function() {
-    navMenu.classList.toggle('active');
+// FORM SUBMISSION
+const form = document.querySelector('form');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const original = btn.innerHTML;
+    btn.innerHTML = 'Sending...';
+    btn.disabled = true;
     
-    // Change icon between ☰ and ✕
-    const icon = this.querySelector('i');
-    if (navMenu.classList.contains('active')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
-    } else {
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
-  });
-  
-  // Close menu when clicking a link
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function() {
-      navMenu.classList.remove('active');
-      const icon = mobileMenu.querySelector('i');
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    });
-  });
-  
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    if (navMenu.classList.contains('active') && 
-        !navMenu.contains(e.target) && 
-        !mobileMenu.contains(e.target)) {
-      navMenu.classList.remove('active');
-      const icon = mobileMenu.querySelector('i');
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
+    // Simulate form submission (replace with actual Formspree)
+    setTimeout(() => {
+      btn.innerHTML = '✓ Message sent!';
+      btn.style.background = '#0b6e6e';
+      
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.background = '';
+        btn.disabled = false;
+        this.reset();
+      }, 2000);
+    }, 1500);
+    
+    // Uncomment this for actual Formspree
+    // this.submit();
   });
 }
