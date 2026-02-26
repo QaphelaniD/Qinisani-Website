@@ -366,14 +366,80 @@ nav a:hover {
   text-align: center;
   color: var(--teal);
   font-weight: 600;
-  margin: 15px 0;
+  margin: 15px 0 5px;
   font-size: 14px;
 }
 
+/* ===== FIXED BUTTONS - CLEARLY VISIBLE ===== */
+.service-card .btn-outline {
+  border: 2px solid var(--teal) !important;
+  color: var(--teal) !important;
+  background: white !important;
+  font-weight: 700 !important;
+  padding: 14px 20px !important;
+  border-radius: 6px !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  margin-top: 15px !important;
+  width: 100% !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  letter-spacing: 0.3px !important;
+  box-shadow: 0 2px 5px rgba(11, 110, 110, 0.1) !important;
+}
+
+.service-card .btn-outline:hover {
+  background: var(--teal) !important;
+  color: white !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 20px rgba(11, 110, 110, 0.3) !important;
+}
+
+.service-card .btn-outline:active {
+  transform: translateY(-1px) !important;
+}
+
+/* Package button - even more prominent */
+.service-card.featured .btn-primary {
+  background: var(--teal) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  padding: 16px 20px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  width: 100% !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  letter-spacing: 0.3px !important;
+  box-shadow: 0 5px 15px rgba(11, 110, 110, 0.3) !important;
+  transition: all 0.3s ease !important;
+  margin-top: 10px !important;
+}
+
+.service-card.featured .btn-primary:hover {
+  background: var(--black) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(11, 110, 110, 0.4) !important;
+}
+
+/* Services footer link */
 .services-footer {
   text-align: center;
   margin-top: 40px;
   color: var(--steel);
+}
+
+.services-footer a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.services-footer a:hover {
+  text-decoration: underline;
 }
 
 /* ABOUT */
@@ -843,6 +909,13 @@ footer {
     align-items: flex-start;
     gap: 10px;
   }
+  
+  /* Make buttons even bigger on mobile for easy tapping */
+  .service-card .btn-outline,
+  .service-card.featured .btn-primary {
+    padding: 16px 20px !important;
+    font-size: 16px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -866,3 +939,4 @@ footer {
     padding: 30px;
   }
 }
+
